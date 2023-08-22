@@ -4,4 +4,5 @@
 3. Replace the AWS credentials at line number 153 with your own.
 4. Change the bucket name at line number 35 to whatever you like.
 5. Execute AmazonS3Select.java and you should see output like this.
+   
    <img src="output_screenshot.png"/>
