@@ -32,7 +32,6 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvParser;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.github.javafaker.Faker;
 
 public class AmazonS3Select {
@@ -51,8 +50,16 @@ public class AmazonS3Select {
 		createBucketIfNotExists(amazonS3);
 
 		Employees employees = generateEmployeeData();
+		
+		long startTimeInMillis = System.currentTimeMillis();
 		exportEmployeesInJsonFormat(employees, amazonS3);
+		long endTimeInMillis = System.currentTimeMillis();
+		System.out.println("Took "+(endTimeInMillis - startTimeInMillis) + " ms to get 5 random records matching a certain age group from 100K records in json format");
+		
+		startTimeInMillis = System.currentTimeMillis();
 		exportEmployeesInCSVFormat(employees, amazonS3);
+		endTimeInMillis = System.currentTimeMillis();
+		System.out.println("Took "+(endTimeInMillis - startTimeInMillis) + " ms to get 5 random records matching a certain age group from 100K records in csv format");
 
 		getAny5EmployeesWhoseAgeIsGreaterThan50FromEmployeesCsvObject(amazonS3);
 		getAny5EmployeesWhoseAgeIsGreaterThan50FromEmployeesJsonObject(amazonS3);
