@@ -150,7 +150,7 @@ public class AmazonS3Select {
 	private static AmazonS3 getAmazonS3Client() {
 		return AmazonS3ClientBuilder.standard()
 				.withCredentials(new AWSStaticCredentialsProvider(
-						new BasicAWSCredentials("AKIA5DV4LDPDPQXDR6JO", "pQV8JRNWu62nT17qTAok8x5c97E4p53AfWDZvwNK")))
+						new BasicAWSCredentials("DUMMY","DUMMY")))
 				.withRegion("us-east-1").build();
 	}
 
